@@ -37,6 +37,13 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="id" className={poppins.variable}>
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4383007745652829"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body>{children}</body>
     </html>
   )
