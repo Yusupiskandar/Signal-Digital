@@ -9,7 +9,7 @@ test.describe('Frontend', () => {
   })
 
   test('can go on homepage', async ({ page }) => {
-    await page.goto('http://localhost:3000')
+    await page.goto('http://localhost:3004')
 
     await expect(page).toHaveTitle(/Signal Digital/)
 

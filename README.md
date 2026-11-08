@@ -13,10 +13,10 @@ Butuh Node.js **22.23.4+** (atau 24.22.1+).
 ```bash
 npm install
 npm run migrate   # membuat/memperbarui tabel database
-npm run dev       # http://localhost:3000
+npm run dev       # http://localhost:3004
 ```
 
-Buka `http://localhost:3000/admin` dan buat akun admin pertama. Saat pertama kali jalan, konten awal (layanan, portofolio, FAQ, dll.) otomatis diisi.
+Buka `http://localhost:3004/admin` dan buat akun admin pertama. Saat pertama kali jalan, konten awal (layanan, portofolio, FAQ, dll.) otomatis diisi.
 
 ## Mengubah konten
 
@@ -46,7 +46,7 @@ npm run generate:types
 ```bash
 npm ci
 npm run build
-npm start          # port 3000; jalankan dengan PM2 atau systemd, di belakang Nginx (HTTPS)
+npm start          # port 3004; jalankan dengan PM2 atau systemd, di belakang Nginx (HTTPS)
 ```
 
 Migration dijalankan otomatis saat server start. Isi `.env` di server:

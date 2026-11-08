@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const name = settings.siteName || 'Signal Digital'
   const title = settings.tagline ? `${name} — ${settings.tagline}` : name
   const description = settings.description || undefined
-  const base = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+  const base = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3004'
 
   return {
     metadataBase: new URL(base),
