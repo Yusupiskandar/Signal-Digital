@@ -60,6 +60,8 @@ export async function seedIfEmpty(payload: Payload): Promise<void> {
 
   const portfolio = [
     { title: 'Aplikasi Rental Mobil', category: 'Aplikasi Web', text: 'Sistem pemesanan dan manajemen armada untuk usaha rental mobil.', url: 'https://indorent.signaldigital.web.id' },
+    { title: 'MediaFlow', category: 'Aplikasi Web', text: 'Media server berbasis web untuk memutar video dan audio, upload file, serta live stream nonstop 24 jam ke YouTube.', url: 'https://mediaflow.signaldigital.web.id' },
+    { title: 'IBM712 Garage', category: 'Company Profile', text: 'Website bengkel motor dengan informasi layanan servis, promo, testimoni, dan booking servis online via WhatsApp.', url: 'https://ibm712.signaldigital.web.id' },
     { title: 'Website Perusahaan', category: 'Company Profile', text: 'Website profil perusahaan yang informatif dan mudah diperbarui.' },
     { title: 'Aplikasi Arsip Data Perusahaan', category: 'Sistem Informasi', text: 'Penyimpanan dan pencarian dokumen perusahaan yang rapi dan aman.' },
   ]
