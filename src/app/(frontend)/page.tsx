@@ -33,6 +33,9 @@ const PORTFOLIO_ICON = ['code', 'file', 'cloud']
 
 const isMedia = (m: unknown): m is Media => typeof m === 'object' && m !== null && 'url' in m
 
+/** Payload mengembalikan URL absolut (berisi NEXT_PUBLIC_SERVER_URL); next/image cukup diberi path-nya. */
+const mediaSrc = (url: string) => (/^https?:\/\//.test(url) ? new URL(url).pathname : url)
+
 export default async function HomePage() {
   const { settings: s, services, portfolio, programs, tools, testimonials, faqs } = await getHomeData()
 
@@ -217,7 +220,7 @@ export default async function HomePage() {
                     {isMedia(p.image) && p.image.url ? (
                       <div className="relative aspect-[16/10]">
                         <Image
-                          src={p.image.url}
+                          src={mediaSrc(p.image.url)}
                           alt={p.image.alt || p.title}
                           fill
                           sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
@@ -341,7 +344,7 @@ export default async function HomePage() {
                     <blockquote className="leading-relaxed text-ink">“{t.quote}”</blockquote>
                     <figcaption className="mt-6 flex items-center gap-3">
                       {isMedia(t.photo) && t.photo.url ? (
-                        <Image src={t.photo.url} alt={t.name} width={44} height={44} className="h-11 w-11 rounded-full object-cover" />
+                        <Image src={mediaSrc(t.photo.url)} alt={t.name} width={44} height={44} className="h-11 w-11 rounded-full object-cover" />
                       ) : (
                         <span className="grid h-11 w-11 place-items-center rounded-full bg-brand-100 font-semibold text-brand-700">
                           {t.name.slice(0, 1)}
