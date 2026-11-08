@@ -30,6 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description,
     alternates: { canonical: '/' },
     openGraph: { type: 'website', siteName: name, title, description, url: '/', locale: 'id_ID' },
+    other: { 'google-adsense-account': 'ca-pub-4383007745652829' },
   }
 }
 
