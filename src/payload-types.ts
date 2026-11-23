@@ -72,6 +72,7 @@ export interface Config {
     portfolio: Portfolio;
     programs: Program;
     tools: Tool;
+    'video-prompts': VideoPrompt;
     testimonials: Testimonial;
     faqs: Faq;
     media: Media;
@@ -88,6 +89,7 @@ export interface Config {
     portfolio: PortfolioSelect<false> | PortfolioSelect<true>;
     programs: ProgramsSelect<false> | ProgramsSelect<true>;
     tools: ToolsSelect<false> | ToolsSelect<true>;
+    'video-prompts': VideoPromptsSelect<false> | VideoPromptsSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     faqs: FaqsSelect<false> | FaqsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
@@ -161,7 +163,7 @@ export interface Service {
   id: number;
   title: string;
   text: string;
-  icon: 'code' | 'cloud' | 'book' | 'bulb' | 'target' | 'chat' | 'shield' | 'users' | 'qr' | 'image' | 'file';
+  icon: 'code' | 'cloud' | 'book' | 'bulb' | 'target' | 'chat' | 'shield' | 'users' | 'qr' | 'image' | 'file' | 'video';
   tags?:
     | {
         label: string;
@@ -229,7 +231,7 @@ export interface Program {
    */
   badge?: string | null;
   text: string;
-  icon: 'code' | 'cloud' | 'book' | 'bulb' | 'target' | 'chat' | 'shield' | 'users' | 'qr' | 'image' | 'file';
+  icon: 'code' | 'cloud' | 'book' | 'bulb' | 'target' | 'chat' | 'shield' | 'users' | 'qr' | 'image' | 'file' | 'video';
   points?:
     | {
         label: string;
@@ -257,9 +259,39 @@ export interface Tool {
   /**
    * Menghubungkan kartu ini ke halaman tool yang sudah dibuat di kode.
    */
-  slug: 'qr-code' | 'jpg-ke-pdf' | 'word-ke-pdf';
+  slug: 'qr-code' | 'jpg-ke-pdf' | 'word-ke-pdf' | 'prompt-video';
   status: 'active' | 'soon';
-  icon: 'code' | 'cloud' | 'book' | 'bulb' | 'target' | 'chat' | 'shield' | 'users' | 'qr' | 'image' | 'file';
+  icon: 'code' | 'cloud' | 'book' | 'bulb' | 'target' | 'chat' | 'shield' | 'users' | 'qr' | 'image' | 'file' | 'video';
+  /**
+   * Angka kecil tampil lebih dulu.
+   */
+  order?: number | null;
+  published?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Daftar prompt yang tampil di halaman /tools/prompt-video. Pengunjung bisa menyalin prompt dengan satu klik.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "video-prompts".
+ */
+export interface VideoPrompt {
+  id: number;
+  title: string;
+  /**
+   * Contoh: Produk, Sinematik, Kuliner. Dipakai untuk filter.
+   */
+  category?: string | null;
+  /**
+   * Contoh: Veo 3, Sora, Kling.
+   */
+  model?: string | null;
+  /**
+   * Unggah gambar (JPG/PNG/WebP) atau video pendek (MP4/WebM) hasil prompt ini.
+   */
+  preview?: (number | null) | Media;
+  prompt: string;
   /**
    * Angka kecil tampil lebih dulu.
    */
@@ -278,6 +310,10 @@ export interface Testimonial {
   id: number;
   name: string;
   role?: string | null;
+  /**
+   * Contoh: "Pengerjaan cepat". Tampil tebal di atas isi testimoni.
+   */
+  title?: string | null;
   quote: string;
   photo?: (number | null) | Media;
   /**
@@ -374,6 +410,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'tools';
         value: number | Tool;
+      } | null)
+    | ({
+        relationTo: 'video-prompts';
+        value: number | VideoPrompt;
       } | null)
     | ({
         relationTo: 'testimonials';
@@ -523,11 +563,27 @@ export interface ToolsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "video-prompts_select".
+ */
+export interface VideoPromptsSelect<T extends boolean = true> {
+  title?: T;
+  category?: T;
+  model?: T;
+  preview?: T;
+  prompt?: T;
+  order?: T;
+  published?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "testimonials_select".
  */
 export interface TestimonialsSelect<T extends boolean = true> {
   name?: T;
   role?: T;
+  title?: T;
   quote?: T;
   photo?: T;
   order?: T;
@@ -675,7 +731,19 @@ export interface SiteSetting {
     | null;
   values?:
     | {
-        icon: 'code' | 'cloud' | 'book' | 'bulb' | 'target' | 'chat' | 'shield' | 'users' | 'qr' | 'image' | 'file';
+        icon:
+          | 'code'
+          | 'cloud'
+          | 'book'
+          | 'bulb'
+          | 'target'
+          | 'chat'
+          | 'shield'
+          | 'users'
+          | 'qr'
+          | 'image'
+          | 'file'
+          | 'video';
         title: string;
         text: string;
         id?: string | null;

@@ -1,8 +1,8 @@
 import type { SVGProps } from 'react'
 
 export type IconName =
-  | 'code' | 'cloud' | 'book' | 'bulb' | 'target' | 'chat' | 'shield' | 'users' | 'qr' | 'image' | 'file'
-  | 'check' | 'arrow' | 'external' | 'plus' | 'menu' | 'x' | 'pin' | 'phone' | 'sparkle' | 'signal'
+  | 'code' | 'cloud' | 'book' | 'bulb' | 'target' | 'chat' | 'shield' | 'users' | 'qr' | 'image' | 'file' | 'video'
+  | 'check' | 'copy' | 'arrow' | 'external' | 'plus' | 'menu' | 'x' | 'pin' | 'phone' | 'sparkle' | 'signal'
 
 const paths: Record<IconName, React.ReactNode> = {
   code: <path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 4l-4 16" />,
@@ -16,6 +16,8 @@ const paths: Record<IconName, React.ReactNode> = {
   qr: (<><rect x="3" y="3" width="7" height="7" rx="1" /><rect x="14" y="3" width="7" height="7" rx="1" /><rect x="3" y="14" width="7" height="7" rx="1" /><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3" /></>),
   image: (<><rect x="3" y="4" width="18" height="16" rx="2" /><circle cx="9" cy="10" r="2" /><path d="M21 16l-5-5-9 9" /></>),
   file: (<><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" /><path d="M14 3v5h5M9 13h6M9 17h4" /></>),
+  video: (<><rect x="3" y="6" width="13" height="12" rx="2" /><path d="M16 10.5l5-3v9l-5-3z" /></>),
+  copy: (<><rect x="9" y="9" width="11" height="11" rx="2" /><path d="M5 15V5a1 1 0 0 1 1-1h10" /></>),
   check: <path d="M5 12.5l4.5 4.5L19 7.5" />,
   arrow: <path d="M5 12h14M13 6l6 6-6 6" />,
   external: <path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" />,

@@ -43,3 +43,9 @@ export const getTools = cache(async () => {
   const res = await payload.find({ collection: 'tools', where: published, sort: 'order', limit: 20, depth: 0 })
   return res.docs
 })
+
+export const getVideoPrompts = cache(async () => {
+  const payload = await getPayloadClient()
+  const res = await payload.find({ collection: 'video-prompts', where: published, sort: 'order', limit: 200, depth: 1 })
+  return res.docs
+})

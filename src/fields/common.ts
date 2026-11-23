@@ -12,6 +12,7 @@ export const ICON_OPTIONS = [
   { label: 'QR Code', value: 'qr' },
   { label: 'Gambar', value: 'image' },
   { label: 'Dokumen', value: 'file' },
+  { label: 'Video', value: 'video' },
 ] as const
 
 export const iconField = (defaultValue = 'code'): Field => ({

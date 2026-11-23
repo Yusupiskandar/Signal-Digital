@@ -81,6 +81,7 @@ export async function seedIfEmpty(payload: Payload): Promise<void> {
     { icon: 'qr', slug: 'qr-code', status: 'active', title: 'Generator QR Code', text: 'Buat QR code untuk link, WhatsApp, atau teks.' },
     { icon: 'image', slug: 'jpg-ke-pdf', status: 'active', title: 'JPG ke PDF', text: 'Gabungkan foto menjadi satu file PDF.' },
     { icon: 'file', slug: 'word-ke-pdf', status: 'active', title: 'Word ke PDF', text: 'Ubah dokumen Word menjadi PDF.' },
+    { icon: 'video', slug: 'prompt-video', status: 'active', title: 'Prompt to Video', text: 'Kumpulan prompt video AI siap salin, lengkap dengan preview.' },
   ] as const
   for (const [i, t] of tools.entries()) {
     await payload.create({ collection: 'tools', data: { ...t, order: i } })

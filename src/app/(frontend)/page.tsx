@@ -332,27 +332,43 @@ export default async function HomePage() {
 
         {/* ============ TESTIMONI ============ */}
         {testimonials.length > 0 && (
-          <section className={`${section} bg-slate-50`}>
-            <div className={container}>
-              <div className="mx-auto max-w-2xl text-center">
-                <span className={eyebrow}>Testimoni</span>
-                <h2 className={sectionTitle}>Apa kata klien kami.</h2>
+          <section id="testimoni" className={`${section} relative overflow-hidden bg-ink`}>
+            <div className="pointer-events-none absolute -left-40 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-brand-600/30 blur-3xl" />
+            <div className={`${container} relative grid items-center gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-16`}>
+              <div>
+                <span className="text-sm font-semibold text-accent-400">Testimoni Klien</span>
+                <h2 className="mt-3 text-3xl leading-tight text-white sm:text-4xl">Dipercaya UMKM &amp; perusahaan untuk naik level.</h2>
+                <p className="mt-5 max-w-md leading-relaxed text-slate-300">
+                  Cerita langsung dari klien yang sudah mempercayakan website, aplikasi, dan kelas digitalnya kepada {s.siteName}.
+                </p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <a href={wa()} target="_blank" rel="noopener noreferrer" className={btnAccent}>
+                    Konsultasi gratis
+                  </a>
+                  {portfolio.length > 0 && (
+                    <a href="#portofolio" className={btnGhost}>
+                      Lihat portofolio
+                    </a>
+                  )}
+                </div>
               </div>
-              <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+              <div className="grid gap-5 sm:grid-cols-2">
                 {testimonials.map((t) => (
-                  <figure key={t.id} className={card}>
-                    <blockquote className="leading-relaxed text-ink">“{t.quote}”</blockquote>
-                    <figcaption className="mt-6 flex items-center gap-3">
+                  <figure key={t.id} className="flex flex-col rounded-3xl bg-white p-6 shadow-soft">
+                    {t.title && <h3 className="text-lg text-ink">{t.title}</h3>}
+                    <blockquote className={`${t.title ? 'mt-2' : ''} flex-1 leading-relaxed text-slate-600`}>{t.quote}</blockquote>
+                    <figcaption className="mt-5 flex items-center gap-3">
                       {isMedia(t.photo) && t.photo.url ? (
-                        <Image src={mediaSrc(t.photo.url)} alt={t.name} width={44} height={44} className="h-11 w-11 rounded-full object-cover" />
+                        <Image src={mediaSrc(t.photo.url)} alt={t.name} width={40} height={40} className="h-10 w-10 rounded-full object-cover" />
                       ) : (
-                        <span className="grid h-11 w-11 place-items-center rounded-full bg-brand-100 font-semibold text-brand-700">
+                        <span className="grid h-10 w-10 place-items-center rounded-full bg-brand-100 font-semibold text-brand-700">
                           {t.name.slice(0, 1)}
                         </span>
                       )}
                       <span>
                         <span className="block text-sm font-semibold text-ink">{t.name}</span>
-                        {t.role && <span className="block text-xs">{t.role}</span>}
+                        {t.role && <span className="block text-xs text-slate-500">{t.role}</span>}
                       </span>
                     </figcaption>
                   </figure>

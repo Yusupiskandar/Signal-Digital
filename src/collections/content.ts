@@ -87,6 +87,7 @@ export const Tools: CollectionConfig = {
         { label: 'Generator QR Code (/tools/qr-code)', value: 'qr-code' },
         { label: 'JPG ke PDF (/tools/jpg-ke-pdf)', value: 'jpg-ke-pdf' },
         { label: 'Word ke PDF (/tools/word-ke-pdf)', value: 'word-ke-pdf' },
+        { label: 'Prompt to Video (/tools/prompt-video)', value: 'prompt-video' },
       ],
       admin: { description: 'Menghubungkan kartu ini ke halaman tool yang sudah dibuat di kode.' },
     },
@@ -108,6 +109,34 @@ export const Tools: CollectionConfig = {
   ],
 }
 
+export const VideoPrompts: CollectionConfig = {
+  slug: 'video-prompts',
+  labels: { singular: 'Prompt Video', plural: 'Prompt Video' },
+  access: publicRead,
+  defaultSort: 'order',
+  admin: {
+    group,
+    useAsTitle: 'title',
+    defaultColumns: ['title', 'category', 'model', 'order', 'published'],
+    description: 'Daftar prompt yang tampil di halaman /tools/prompt-video. Pengunjung bisa menyalin prompt dengan satu klik.',
+  },
+  fields: [
+    { name: 'title', label: 'Judul', type: 'text', required: true },
+    { name: 'category', label: 'Kategori', type: 'text', admin: { description: 'Contoh: Produk, Sinematik, Kuliner. Dipakai untuk filter.' } },
+    { name: 'model', label: 'Model AI (opsional)', type: 'text', admin: { description: 'Contoh: Veo 3, Sora, Kling.' } },
+    {
+      name: 'preview',
+      label: 'Preview (gambar atau video)',
+      type: 'upload',
+      relationTo: 'media',
+      admin: { description: 'Unggah gambar (JPG/PNG/WebP) atau video pendek (MP4/WebM) hasil prompt ini.' },
+    },
+    { name: 'prompt', label: 'Prompt', type: 'textarea', required: true, admin: { rows: 8 } },
+    orderField,
+    publishedField,
+  ],
+}
+
 export const Testimonials: CollectionConfig = {
   slug: 'testimonials',
   labels: { singular: 'Testimoni', plural: 'Testimoni' },
@@ -122,6 +151,12 @@ export const Testimonials: CollectionConfig = {
   fields: [
     { name: 'name', label: 'Nama', type: 'text', required: true },
     { name: 'role', label: 'Jabatan / usaha', type: 'text' },
+    {
+      name: 'title',
+      label: 'Judul singkat (opsional)',
+      type: 'text',
+      admin: { description: 'Contoh: "Pengerjaan cepat". Tampil tebal di atas isi testimoni.' },
+    },
     { name: 'quote', label: 'Testimoni', type: 'textarea', required: true },
     { name: 'photo', label: 'Foto (opsional)', type: 'upload', relationTo: 'media' },
     orderField,

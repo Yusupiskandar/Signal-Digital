@@ -6,7 +6,7 @@ import { buildConfig } from 'payload'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
-import { Faqs, Portfolio, Programs, Services, Testimonials, Tools } from './collections/content'
+import { Faqs, Portfolio, Programs, Services, Testimonials, Tools, VideoPrompts } from './collections/content'
 import { Leads } from './collections/Leads'
 import { Media } from './collections/Media'
 import { Users } from './collections/Users'
@@ -33,7 +33,7 @@ export default buildConfig({
     fallbackLanguage: 'id',
     supportedLanguages: { id },
   },
-  collections: [Leads, Services, Portfolio, Programs, Tools, Testimonials, Faqs, Media, Users],
+  collections: [Leads, Services, Portfolio, Programs, Tools, VideoPrompts, Testimonials, Faqs, Media, Users],
   globals: [SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

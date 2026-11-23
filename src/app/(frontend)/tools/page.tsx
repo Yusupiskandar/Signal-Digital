@@ -6,7 +6,7 @@ import { getTools } from '@/lib/payload'
 
 export const metadata: Metadata = {
   title: 'Tools Gratis — Signal Digital',
-  description: 'Generator QR code, JPG ke PDF, dan Word ke PDF. Gratis, langsung dari browser, tanpa daftar.',
+  description: 'Generator QR code, JPG ke PDF, Word ke PDF, dan kumpulan prompt video AI. Gratis, langsung dari browser, tanpa daftar.',
   alternates: { canonical: '/tools' },
 }
 
